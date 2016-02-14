@@ -1,0 +1,23 @@
+{
+  "title": "Crumby Plex to VLC",
+  "name": "crumbyplextovlc",
+  "version": "0.0.2",
+  "description": "A simple addon that opens plex media onto VLC (VLC must be installed first)",
+  "main": "index.js",
+  "author": "kelvin.innovator",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ],
+      "preferences": [{
+    "description": "Tis Linux not windows?",
+    "type": "bool",
+    "name": "crumblyLinuxOption",
+    "value": false,
+    "title": "Is Linux?"
+	}]
+}
