@@ -18,31 +18,26 @@ var button = buttons.ActionButton({
 
 
 function handleClick(state) {
-
-
-//Linux Checkbox
-	var isLinux = require("sdk/simple-prefs").prefs.crumblyLinuxOption;
-	
+var isLinux = require("sdk/simple-prefs").prefs.crumblyLinuxOption;
 	var tab = require("sdk/tabs").activeTab.attach({
-  		contentScript: "self.postMessage(document.body.querySelector('.download-btn.secondary-only').href);",
+  contentScript: "self.postMessage(document.body.querySelector('.download-btn.secondary-only').href);",
   
   onMessage: function(data)
   {
-
 	var exeFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
-
-		if (isLinux==true){
-			exeFile.initWithPath("/usr/bin/vlc");
-			} else {
-			exeFile.initWithPath("C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe");
-			}
+	if (isLinux==true){
+		exeFile.initWithPath("/usr/bin/vlc");
+			
+		}	else {
+		exeFile.initWithPath("C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe");
+		}
 	
 	if(exeFile.exists()){
 		var process = Cc["@mozilla.org/process/util;1"].createInstance(Ci.nsIProcess);  
 		process.init(exeFile);
 		process.run(false,[data],1);
+			}
 		}
-  }
-});
+	});
 
 }
